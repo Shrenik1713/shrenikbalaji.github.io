@@ -97,6 +97,26 @@ const portfolioData = {
   ]
 };
 
+//blog Elements
+const blogSearch = document.getElementById('blogSearch');
+const blogCategory = document.getElementById('blogCategory');
+const blogCards = document.querySelectorAll('.blog-card');
+
+function filterBlogs() {
+  const searchVal = blogSearch.value.toLowerCase();
+  const categoryVal = blogCategory.value;
+  blogCards.forEach(card => {
+    const matchesCategory = categoryVal === "all" || card.dataset.category === categoryVal;
+    const matchesSearch = card.querySelector('.blog-title').textContent.toLowerCase().includes(searchVal)
+        || card.querySelector('.blog-desc').textContent.toLowerCase().includes(searchVal);
+    card.style.display = matchesCategory && matchesSearch ? "block" : "none";
+  });
+}
+blogSearch.addEventListener('input', filterBlogs);
+blogCategory.addEventListener('change', filterBlogs);
+
+
+
 // DOM Elements
 const mobileMenu = document.getElementById('mobile-menu');
 const navMenu = document.getElementById('nav-menu');
