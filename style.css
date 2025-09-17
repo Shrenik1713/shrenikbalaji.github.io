@@ -470,12 +470,6 @@ pre code {
 .btn--full-width {
   width: 100%;
 }
-
-.btn:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
 /* Form elements */
 .form-control {
   display: block;
