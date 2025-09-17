@@ -405,6 +405,7 @@ pre code {
   border: none;
   text-decoration: none;
   position: relative;
+  scroll-behavior: smooth;
 }
 
 .btn:focus-visible {
@@ -415,6 +416,7 @@ pre code {
 .btn--primary {
   background: var(--color-primary);
   color: var(--color-btn-primary-text);
+  scroll-behavior: smooth;
 }
 
 .btn--primary:hover {
@@ -442,6 +444,7 @@ pre code {
   background: transparent;
   border: 1px solid var(--color-border);
   color: var(--color-text);
+  scroll-behavior: smooth;
 }
 
 .btn--outline:hover {
