@@ -29,9 +29,8 @@ const portfolioData = {
     {"name": "TensorFlow", "category": "ai", "icon": "fas fa-brain"},
     {"name": "PyTorch", "category": "ai", "icon": "fas fa-fire"},
     {"name": "scikit-learn", "category": "ai", "icon": "fas fa-chart-line"},
-    {"name": "OpenCV", "category": "ai", "icon": "fas fa-eye"}
-];
-    // { "name": "Data Analysis", "level": 80, "category": "ai" }
+    {"name": "OpenCV", "category": "ai", "icon": "fas fa-eye"},
+    { "name": "Data Analysis", "level": 80, "category": "ai" }
   ],
   "projects": [
     // {
