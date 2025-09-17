@@ -276,7 +276,6 @@ function updateActiveNavLink() {
 function handleSmoothScroll(e) {
     e.preventDefault();
     const target = document.querySelector(e.currentTarget.getAttribute('href'));
-  const target = document.querySelector(targetSelector);
     if (target) {
         const offsetTop = target.offsetTop - 70; // Account for fixed navbar
         window.scrollTo({
