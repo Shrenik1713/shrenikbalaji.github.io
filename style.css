@@ -1155,20 +1155,20 @@ section {
 }
 
 .skill-card {
-    background: #fff;
+    background: var(--card-bg);
     border-radius: 12px;
     padding: 24px 16px;
     text-align: center;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-    border: 1px solid #e5e7eb;
+    box-shadow: 0 8px 25px var(--card-shadow-hover);
+    border: 2px solid var(--card-border, rgba(0,0,0,0.1));
     transition: all 0.3s ease;
-    opacity: 1;
     transform: translateY(0);
 }
 
 .skill-card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+     box-shadow: 0 4px 6px var(--card-shadow, rgba(112, 112, 112, 0.952));
+    
 }
 
 .skill-card.hidden {
@@ -1178,18 +1178,37 @@ section {
 }
 
 .skill-icon {
-    font-size: 36px;
-    color: #3b82f6;
+     font-size: 36px;
+    color: var(--icon-color);
     margin-bottom: 12px;
     display: block;
 }
 
 .skill-name {
-    font-size: 16px;
+   font-size: 16px;
     font-weight: 600;
-    color: #1f2937;
+    color: var(--card-text);
     margin: 0;
 }
+
+body.light-theme {
+    --card-bg: #fff;
+    --card-text: #1f2937;
+    --card-border: #34383d;
+    --card-shadow: rgba(0,0,0,0.05);
+    --card-shadow-hover: rgba(0,0,0,0.1);
+    --icon-color: #3b82f6;
+}
+
+body.dark-theme {
+    --card-bg: #23272a;
+    --card-text: #e3f6fb;
+    --card-border: #e5e7eb;
+    --card-shadow: rgba(0,0,0,0.18);
+    --card-shadow-hover: rgba(0,0,0,0.32);
+    --icon-color: #19c9e6;
+}
+
 
 .filter-btn {
     background: #f3f4f6;
