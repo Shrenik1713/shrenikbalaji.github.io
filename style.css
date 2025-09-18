@@ -189,6 +189,9 @@
     --button-border-secondary: rgba(var(--color-gray-400-rgb), 0.2);
     --color-border-secondary: rgba(var(--color-gray-400-rgb), 0.2);
     --color-select-caret: rgba(var(--color-gray-200-rgb), 0.8);
+    --input-bg: #23272a;
+    --input-text: #e3f6fb;
+    --input-border: #505458;
 
     /* Common style patterns - updated for dark mode */
     --focus-ring: 0 0 0 3px var(--color-focus-ring);
@@ -291,11 +294,16 @@
   --color-info: var(--color-slate-500);
   --color-focus-ring: rgba(var(--color-teal-500-rgb), 0.4);
 
+
   /* RGB versions for light mode */
   --color-success-rgb: var(--color-teal-500-rgb);
   --color-error-rgb: var(--color-red-500-rgb);
   --color-warning-rgb: var(--color-orange-500-rgb);
   --color-info-rgb: var(--color-slate-500-rgb);
+
+  --input-bg: #f9fafd;
+  --input-text: #222;
+  --input-border: #c3cad0;
 }
 
 /* Base styles */
@@ -1465,10 +1473,11 @@ section {
   margin-top: 24px;
 }
 .blog-card {
-  background: var(--surface, #23272a);
+  background: var(--surface);
   border-radius: 12px;
+  border: 2px solid var(--input-border, #505458);
   padding: 20px;
-  box-shadow: 0 2px 24px rgba(24,30,33,0.11);
+  box-shadow: 0 2px 24px  rgba(20,34,60,0.14);
   display: flex;
   flex-direction: column;
   align-items: start;
@@ -1515,6 +1524,42 @@ section {
 #blogSearch {
   flex: 1;
   min-width: 160px;
+   padding: 12px 16px; /* Makes input bigger */
+  font-size: 1.1em;
+  background: var(--input-bg, #23272a);
+  color: var(--input-text, #e3f6fb);
+  border: 2px solid var(--input-border, #505458);
+  border-radius: 6px;
+  transition: background 0.2s, color 0.2s, border 0.2s;
+}
+#blogSearch:focus {
+  outline: none;
+  border-color: var(--accent, #19c9e6);
+}
+
+.blog-controls select {
+  background: var(--input-bg, #23272a);
+  color: var(--input-text, #e3f6fb);
+  border: 2px solid var(--input-border, #505458);
+  padding: 12px 16px;
+  border-radius: 6px;
+  font-size: 1em;
+  transition: background 0.2s, color 0.2s;
+}
+.blog-controls select:focus {
+  outline: none;
+  border-color: var(--accent, #19c9e6);
+}
+
+body.light-theme {
+  --surface: #fff;
+  --card-text: #222;
+  --text: #222;
+}
+body.dark-theme {
+  --surface: #23272a;
+  --card-text: #e3f6fb;
+  --text: #e3f6fb;
 }
 
 
