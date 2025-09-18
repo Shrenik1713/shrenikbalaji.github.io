@@ -438,6 +438,43 @@ window.addEventListener('load', function() {
   }
 });
 
+// TYPING EFFECT (for hero "highlight" text)
+const heroPhrases = ["Shrenik", "a Developer", "an AI Enthusiast", "a Learner"];
+const typingText = document.querySelector('.hero-title .highlight');
+let phraseIndex = 0;
+let letterIndex = 0;
+let isDeleting = false;
+let typingSpeed = 150;
+
+function typeCycle() {
+  if (!typingText) return;
+  const currentPhrase = heroPhrases[phraseIndex];
+  if (!isDeleting) {
+    typingText.textContent = currentPhrase.substring(0, letterIndex++);
+    if (letterIndex > currentPhrase.length) {
+      isDeleting = true;
+      typingSpeed = 1000;
+    } else {
+      typingSpeed = 150;
+    }
+  } else {
+    typingText.textContent = currentPhrase.substring(0, letterIndex--);
+    if (letterIndex < 0) {
+      isDeleting = false;
+      phraseIndex = (phraseIndex + 1) % heroPhrases.length;
+      typingSpeed = 500;
+    } else {
+      typingSpeed = 50;
+    }
+  }
+  setTimeout(typeCycle, typingSpeed);
+}
+
+window.addEventListener('load', () => {
+  typeCycle();
+});
+
+
 // === PAGE REVEAL ON SCROLL ===
 function revealOnScroll() {
   const reveals = document.querySelectorAll('.section-title, .about-text, .timeline-item, .project-card, .skill-card');
