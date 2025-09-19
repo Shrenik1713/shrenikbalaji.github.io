@@ -1585,7 +1585,7 @@ body.dark-theme {
   gap: 20px;
   margin-bottom: 18px;
   padding: 0 4px;
-  max-width: 1090px; /* matches approx 3 cards width */
+  max-width: 1135px; /* matches approx 3 cards width */
   margin-left: auto;
   margin-right: auto;
   padding: 0 4px;
