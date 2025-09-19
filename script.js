@@ -275,13 +275,15 @@ function handleSkillsFilter(e) {
   e.target.classList.add('active');
   skillCards.forEach(card => {
     if (filter === 'all' || card.classList.contains(`skill-${filter}`)) {
-      card.style.display = 'flex';
+      card.classList.remove('hidden');
       card.style.animation = 'fadeIn 0.3s ease-out';
     } else {
-      card.style.display = 'none';
+      card.classList.add('hidden');
+      card.style.animation = '';
     }
   });
 }
+
 
 // === PROJECTS SECTION ===
 function populateProjects() {
