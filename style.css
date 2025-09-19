@@ -1837,3 +1837,14 @@ body.dark-theme {
     padding-bottom: var(--space-8);
   }
 }
+
+.timeline-item {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s, transform 0.6s;
+}
+.timeline-item.visible {
+  opacity: 1;
+  transform: none;
+}
+
