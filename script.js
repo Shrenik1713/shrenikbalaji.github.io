@@ -85,78 +85,99 @@ let isMenuOpen = false;
 document.addEventListener('DOMContentLoaded', function() {
   initializeApp();
 
-  // Additional timeline scroll logic
-  const experienceSection = document.querySelector('.experience');
-  const timelineItems = document.querySelectorAll('.timeline-item');
-  let lastScrollTop = window.pageYOffset || document.documentElement.scrollTop;
-  let visibleCount = 0; // to track how many cards are visible
-  let timeout1, timeout2;
+//   // Additional timeline scroll logic
+//   const experienceSection = document.querySelector('.experience');
+//   const timelineItems = document.querySelectorAll('.timeline-item');
+//   let lastScrollTop = window.pageYOffset || document.documentElement.scrollTop;
+//   let visibleCount = 0; // to track how many cards are visible
+//   let timeout1, timeout2;
 
-  const isInViewport = (element) => {
-    const rect = element.getBoundingClientRect();
-    return rect.top < window.innerHeight && rect.bottom > 0;
-  };
+//   const isInViewport = (element) => {
+//     const rect = element.getBoundingClientRect();
+//     return rect.top < window.innerHeight && rect.bottom > 0;
+//   };
 
-  function showCard(index) {
-    if (timelineItems[index]) {
-      timelineItems[index].classList.add('visible');
-      visibleCount = Math.max(visibleCount, index + 1);
-    }
-  }
+//   function showCard(index) {
+//     if (timelineItems[index]) {
+//       timelineItems[index].classList.add('visible');
+//       visibleCount = Math.max(visibleCount, index + 1);
+//     }
+//   }
 
-  function hideCard(index) {
-    if (timelineItems[index]) {
-      timelineItems[index].classList.remove('visible');
-      visibleCount = Math.min(visibleCount, index);
-    }
-  }
+//   function hideCard(index) {
+//     if (timelineItems[index]) {
+//       timelineItems[index].classList.remove('visible');
+//       visibleCount = Math.min(visibleCount, index);
+//     }
+//   }
 
-  function hideAllCards() {
-    timelineItems.forEach(card => card.classList.remove('visible'));
-    visibleCount = 0;
-  }
+//   function hideAllCards() {
+//     timelineItems.forEach(card => card.classList.remove('visible'));
+//     visibleCount = 0;
+//   }
 
-  window.addEventListener('scroll', throttle(() => {
-    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    const scrollingDown = scrollTop > lastScrollTop;
-    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+//   window.addEventListener('scroll', throttle(() => {
+//     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+//     const scrollingDown = scrollTop > lastScrollTop;
+//     lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
 
-    if (!isInViewport(experienceSection)) {
-      hideAllCards();
-      clearTimeout(timeout1);
-      clearTimeout(timeout2);
-      return;
-    }
+//     if (!isInViewport(experienceSection)) {
+//       hideAllCards();
+//       clearTimeout(timeout1);
+//       clearTimeout(timeout2);
+//       return;
+//     }
 
-    if (scrollingDown) {
-      if (visibleCount === 0) {
-        showCard(0);
-        clearTimeout(timeout2);
-        timeout1 = setTimeout(() => {
-          showCard(1);
-        }, 2000);
-      }
+//     if (scrollingDown) {
+//       if (visibleCount === 0) {
+//         showCard(0);
+//         clearTimeout(timeout2);
+//         timeout1 = setTimeout(() => {
+//           showCard(1);
+//         }, 2000);
+//       }
+//     } else {
+//       clearTimeout(timeout1);
+//       clearTimeout(timeout2);
+//       if (visibleCount === 0) {
+//        // If none visible, reveal second card first, then first card
+//     showCard(1);
+//     timeout2 = setTimeout(() => {
+//       showCard(0);
+//     }, 2000);
+//   } else if (visibleCount === 2) {
+//     // Hide first card first, keep second card visible
+//     hideCard(0); 
+//       } else if (visibleCount === 1) {
+//         hideCard(1);
+//       }     
+//     }
+//   }, 10));
+// });
+
+const timelineItems = document.querySelectorAll('.timeline-item');
+
+function isInViewport(element) {
+  const rect = element.getBoundingClientRect();
+  return rect.top < window.innerHeight && rect.bottom > 0;
+}
+
+function handleScrollReveal() {
+  timelineItems.forEach(card => {
+    if (isInViewport(card)) {
+      card.classList.add('visible');
     } else {
-      clearTimeout(timeout1);
-      clearTimeout(timeout2);
-      if (visibleCount === 0) {
-       // If none visible, reveal second card first, then first card
-    showCard(1);
-    timeout2 = setTimeout(() => {
-      showCard(0);
-    }, 20);
-  } else if (visibleCount === 2) {
-    // Hide first card first, keep second card visible
-    hideCard(0); 
-      } else if (visibleCount === 1) {
-        hideCard(1);
-      } else if (visibleCount === 0) {
-        hideCard(0);
-      }     
+      card.classList.remove('visible');
     }
-  }, 10));
-});
+  });
+}
 
+window.addEventListener('scroll', handleScrollReveal);
+window.addEventListener('resize', handleScrollReveal); // For responsive designs
+
+// Optionally call once on load to set initial state
+document.addEventListener('DOMContentLoaded', handleScrollReveal);
+});
 
 function initializeApp() {
   setTimeout(() => loadingScreen.classList.add('hidden'), 1000);
