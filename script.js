@@ -31,6 +31,34 @@ const portfolioData = {
     {"name": "scikit-learn", "category": "ai", "icon": "fas fa-chart-line"},
     {"name": "OpenCV", "category": "ai", "icon": "fas fa-eye"}
   ],
+
+  blogs: [
+    {
+      title: "Building Responsive Layouts",
+      description: "Tips and patterns for mobile-first web design using CSS Grid and Flexbox.",
+      category: "web",
+      image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop", // Replace with your image file
+      date: "Aug 2025",
+      link: "blog-post-1.html"
+    },
+    {
+      title: "Intro to Neural Networks",
+      description: "Demystifying the basics of neural networks for CS students.",
+      category: "ai",
+      image: "https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?w=600&h=400&fit=crop",
+      date: "Aug 2025",
+      link: "blog-post-2.html"
+    },
+    {
+      title: "Landing Your First Tech Job",
+      description: "Strategies and resources for students seeking their first developer position.",
+      category: "career",
+      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop",
+      date: "Sep 2025",
+      link: "blog-post-3.html"
+    }
+  ],
+
   "projects": [
     {
       "title": "Product Recommendation System",
@@ -85,76 +113,6 @@ let isMenuOpen = false;
 document.addEventListener('DOMContentLoaded', function() {
   initializeApp();
 
-//   // Additional timeline scroll logic
-//   const experienceSection = document.querySelector('.experience');
-//   const timelineItems = document.querySelectorAll('.timeline-item');
-//   let lastScrollTop = window.pageYOffset || document.documentElement.scrollTop;
-//   let visibleCount = 0; // to track how many cards are visible
-//   let timeout1, timeout2;
-
-//   const isInViewport = (element) => {
-//     const rect = element.getBoundingClientRect();
-//     return rect.top < window.innerHeight && rect.bottom > 0;
-//   };
-
-//   function showCard(index) {
-//     if (timelineItems[index]) {
-//       timelineItems[index].classList.add('visible');
-//       visibleCount = Math.max(visibleCount, index + 1);
-//     }
-//   }
-
-//   function hideCard(index) {
-//     if (timelineItems[index]) {
-//       timelineItems[index].classList.remove('visible');
-//       visibleCount = Math.min(visibleCount, index);
-//     }
-//   }
-
-//   function hideAllCards() {
-//     timelineItems.forEach(card => card.classList.remove('visible'));
-//     visibleCount = 0;
-//   }
-
-//   window.addEventListener('scroll', throttle(() => {
-//     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-//     const scrollingDown = scrollTop > lastScrollTop;
-//     lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
-
-//     if (!isInViewport(experienceSection)) {
-//       hideAllCards();
-//       clearTimeout(timeout1);
-//       clearTimeout(timeout2);
-//       return;
-//     }
-
-//     if (scrollingDown) {
-//       if (visibleCount === 0) {
-//         showCard(0);
-//         clearTimeout(timeout2);
-//         timeout1 = setTimeout(() => {
-//           showCard(1);
-//         }, 2000);
-//       }
-//     } else {
-//       clearTimeout(timeout1);
-//       clearTimeout(timeout2);
-//       if (visibleCount === 0) {
-//        // If none visible, reveal second card first, then first card
-//     showCard(1);
-//     timeout2 = setTimeout(() => {
-//       showCard(0);
-//     }, 2000);
-//   } else if (visibleCount === 2) {
-//     // Hide first card first, keep second card visible
-//     hideCard(0); 
-//       } else if (visibleCount === 1) {
-//         hideCard(1);
-//       }     
-//     }
-//   }, 10));
-// });
-
 const timelineItems = document.querySelectorAll('.timeline-item');
 
 function isInViewport(element) {
@@ -185,6 +143,7 @@ function initializeApp() {
   setupEventListeners();
   populateSkills();
   populateProjects();
+  populateBlogs();
   handleScroll();
   setupIntersectionObserver();
 }
@@ -374,6 +333,30 @@ function filterBlogs() {
     card.style.display = matchesCategory && matchesSearch ? "block" : "none";
   });
 }
+
+function populateBlogs() {
+  const blogGrid = document.getElementById('blogGrid');
+  if (!blogGrid) return;
+  blogGrid.innerHTML = '';
+  portfolioData.blogs.forEach(blog => {
+    const blogCard = document.createElement('div');
+    blogCard.className = 'blog-card';
+    blogCard.setAttribute('data-category', blog.category);
+    blogCard.innerHTML = `
+      <img src="${blog.image}" alt="${blog.title}" class="blog-img" loading="lazy">
+      <h3 class="blog-title">${blog.title}</h3>
+      <p class="blog-desc">${blog.description}</p>
+      <span class="blog-meta">${capitalize(blog.category)} • ${blog.date}</span>
+      <a href="${blog.link}" class="blog-read">Read More</a>
+    `;
+    blogGrid.appendChild(blogCard);
+  });
+}
+
+function capitalize(str) {
+  return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
 
 // === CONTACT FORM ===
 function handleContactForm(e) {
