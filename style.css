@@ -1131,21 +1131,6 @@ section {
   color: var(--color-text-secondary);
 }
 
-/* .skill-progress {
-  height: 6px;
-  background: var(--skill-progress-bg);
-  border-radius: var(--radius-full);
-  overflow: hidden;
-}
- */
-/* .skill-progress-bar {
-  height: 100%;
-  background: var(--color-primary);
-  border-radius: var(--radius-full);
-  transition: width 1s var(--ease-standard);
-  width: 0;
-} */
-
 .skills-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
