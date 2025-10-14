@@ -66,7 +66,7 @@ const portfolioData = {
       "technologies": ["React", "Node.js", "Express", "MySQL", "Stripe API"],
       "image": "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop",
       "liveDemo": "#",
-      "github": "#",
+      "github": "https://github.com/Shrenik1713/Product-Management-System",
       "featured": true,
       "category": "web"
     },
@@ -76,7 +76,7 @@ const portfolioData = {
       "technologies": ["Python", "Flask", "D3.js", "PostgreSQL", "Redis"],
       "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop",
       "liveDemo": "#",
-      "github": "#",
+      "github": "https://github.com/Shrenik1713/Optical-Character-recognition",
       "featured": false,
       "category": "ai"
     },
@@ -86,9 +86,9 @@ const portfolioData = {
       "technologies": ["React Native", "JavaScript", "Weather API", "Maps API"],
       "image": "https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?w=600&h=400&fit=crop",
       "liveDemo": "#",
-      "github": "#",
+      "github": "https://github.com/Shrenik1713/AI-Travel-Chatbot",
       "featured": false,
-      "category": "web"
+      "category": "ai""web"
     }
   ]
 };
