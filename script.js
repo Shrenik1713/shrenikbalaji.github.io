@@ -88,7 +88,7 @@ const portfolioData = {
       "liveDemo": "#",
       "github": "https://github.com/Shrenik1713/AI-Travel-Chatbot",
       "featured": false,
-      "category": "ai""web"
+      "category": "web"
     }
   ]
 };
